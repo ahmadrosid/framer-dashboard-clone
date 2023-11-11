@@ -29,11 +29,13 @@ import { Check, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FramerIcon } from "@/components/icons/framer-icon";
 import { HorizontalOptionIcon } from "@/components/icons/horizontal-option-icon";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const filters = ["Last viewed by me", "Last edited", "Alphabetically"];
   const [activeFilter, setActiveFilter] = useState(filters[0]);
   const [openFilter, setOpenFilter] = useState(false);
+  const route = useRouter();
 
   return (
     <main className="flex">
@@ -227,7 +229,11 @@ export default function Home() {
                     <ListIcon />
                   </button>
                 </div>
-                <Button size="xs" className="px-2 text-xs shadow-md">
+                <Button
+                  onClick={() => route.push("projects")}
+                  size="xs"
+                  className="px-2 text-xs shadow-md"
+                >
                   <PlusIcon className="w-4 text-white mr-1" /> New
                 </Button>
               </div>
